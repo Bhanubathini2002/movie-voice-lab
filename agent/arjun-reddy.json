@@ -1,0 +1,49 @@
+{
+  "slug": "arjun-reddy",
+  "routeKey": "tollywood/arjun-reddy/arjun",
+  "promptFile": "arjun-reddy.notice.prompt.md",
+  "voice": {
+    "name": "Arjun Reddy (designed)",
+    "description": "A young Indian man in his late twenties from Hyderabad, speaking English with a natural Telugu accent. Deep, slightly raspy baritone with a tired, controlled, low-energy delivery, like someone who has not slept and does not care. Unhurried pacing, flat intonation most of the time, with sudden sharp intensity when provoked. Intimate close-mic phone call quality. Not polished, not a radio voice: raw, confident, a little arrogant, quietly intense.",
+    "previewText": "Cheppu. Who gave you this number? Shiva? Of course it was Shiva. Listen, I have a surgery in forty minutes, so say what you want to say. No, I'm not angry. This is what I sound like when I'm not angry. Arey, you called me, ra. Talk.",
+    "model": "eleven_multilingual_ttv_v2",
+    "guidanceScale": 6,
+    "loudness": 0.4,
+    "labels": {
+      "character": "Arjun Reddy",
+      "project": "movie-voice-lab"
+    },
+    "note": "Voice Design via API needs a paid plan. On the free tier the script uses voiceId above (a Voice Library voice). Set ELEVENLABS_VOICE_ID to override."
+  },
+  "agent": {
+    "name": "Arjun Reddy — Movie Voice Lab",
+    "firstMessage": "Sorry. Director Sandeep Reddy Vanga and actor Vijay Deverakonda have not agreed to clone the voice or the character of Arjun Reddy, so I cannot answer your questions as Arjun. This is only an unofficial prototype. Thank you for understanding.",
+    "language": "en",
+    "llm": "gpt-4o",
+    "temperature": 0.2,
+    "ttsModel": "eleven_flash_v2",
+    "stability": 0.35,
+    "similarity": 0.8,
+    "speed": 0.96,
+    "turnTimeout": 8
+  },
+  "voiceId": "EMxdghWQV7gqV33j4J3F",
+  "voiceOptions": {
+    "A": {
+      "voiceId": "EMxdghWQV7gqV33j4J3F",
+      "name": "Abhi - Authentic Telugu Male",
+      "why": "Genuine Telugu accent; best for the Telugu-English mix"
+    },
+    "B": {
+      "voiceId": "hVW4wZBBYrSarQUxS5OS",
+      "name": "Vikram S - Deep, Gripping & Calm",
+      "why": "Young, deep, low-energy menace; closest to Arjun's tired intensity"
+    },
+    "C": {
+      "voiceId": "tSVwqkJGEKjLklhiN0Nx",
+      "name": "Viraj - Deep, Resonant and Lyrical",
+      "why": "Young, deep baritone; smoother and more romantic"
+    }
+  },
+  "note": "User decision 2026-10-04: no roleplay. The agent only repeats the not-agreed notice. The full persona is kept in arjun-reddy.prompt.md for reference."
+}
