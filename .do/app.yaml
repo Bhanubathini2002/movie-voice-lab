@@ -2,10 +2,9 @@ name: movie-voice-lab
 region: blr
 static_sites:
   - name: web
-    github:
-      repo: Bhanubathini2002/movie-voice-lab
+    git:
+      repo_clone_url: https://github.com/Bhanubathini2002/movie-voice-lab.git
       branch: main
-      deploy_on_push: true
     build_command: npm ci && npm run build
     output_dir: dist
     environment_slug: node-js
