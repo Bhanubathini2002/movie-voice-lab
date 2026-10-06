@@ -574,7 +574,7 @@ p {
 /* ---------- Industry cards ---------- */
 .industry-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 .industry-card {
@@ -677,6 +677,14 @@ p {
 }
 .poster-grid--compact > * {
   max-width: 260px;
+}
+/* Larger catalogues: equal columns so the last row never stretches. */
+.poster-grid--many {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.poster-grid--many > * {
+  max-width: none;
 }
 .poster-card {
   display: block;
@@ -925,6 +933,17 @@ p {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+.banner__notice {
+  margin-top: 22px;
+  max-width: 62ch;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-2);
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-radius: 0 var(--r-sm, 10px) var(--r-sm, 10px) 0;
 }
 .banner__facts span,
 .chip {
@@ -1393,6 +1412,9 @@ p {
   }
   .backdrop__poster {
     max-width: 240px;
+  }
+  .poster-grid--many {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .footer__inner {
     grid-template-columns: 1fr;

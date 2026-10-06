@@ -1,7 +1,33 @@
 # Movie Voice Lab
 
-Browse Tollywood, Bollywood and Hollywood films, open a character, and talk to them through an
+Browse Tollywood, Kollywood, Bollywood and Hollywood films, open a character, and call them through an
 ElevenLabs voice agent. Built with React, Vite, React Router, Framer Motion and `@elevenlabs/react`.
+
+## Permission first
+
+No character is voiced until the people who own it say yes. Every film in `src/data/movies.js` lists its
+`director` (and `studio` where relevant) and every character lists the `actor` who played the part. Until
+they give permission:
+
+- the character page shows a **Permission pending** note naming those people, and
+- the Connect button reaches one shared **permission-notice agent** that only says, in the caller's ear,
+  that the director, studio and actor have not yet given permission to clone that character, and then
+  politely refuses to roleplay.
+
+The shared agent is created once with:
+
+```bash
+npm run agent:notice
+```
+
+It writes `noticeAgentId` into `src/data/agents.js`. The site passes `character_name`, `movie_title` and
+`rights_holders` to it as ElevenLabs dynamic variables at call start, so one agent covers every character.
+Arjun Reddy keeps his own agent (below), which carries the same notice for Sandeep Reddy Vanga and
+Vijay Deverakonda.
+
+The Kollywood section lists eight Tamil films from actor Rajaji's filmography (Ko, Moodar Koodam, Sathuran,
+Engitta Modhathey, Kolanji, Koorman, Tik Tok, Once Upon a Time in Madras). Each one names the director,
+production house and cast who would need to approve a voice before it goes live.
 
 ## Run it
 
@@ -98,7 +124,8 @@ https://elevenlabs.io/docs/agents-platform/libraries/react for the token flow.
 ## Project layout
 
 - `src/data/movies.js` – industries, films, characters, phone numbers, descriptions
-- `src/data/agents.js` – character → ElevenLabs agent ID map
+- `src/data/agents.js` – character → ElevenLabs agent ID map, plus the shared `noticeAgentId`
+- `src/data/rights.js` – who has to give permission for each character, and the notice text built from it
 - `src/data/art.js` – artwork path helpers
 - `src/components/` – Nav, Footer, Layout (page transitions), Cards, Artwork, VoiceCall, Icons, Motion
 - `src/pages/` – Home, Industry, Movie, Character, NotFound

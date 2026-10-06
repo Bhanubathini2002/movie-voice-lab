@@ -13,15 +13,18 @@ const totalCharacters = industries.reduce((n, i) => n + i.movies.reduce((m, mv) 
 // A curated row for the home page: first character of a few standout films.
 const featured = [
   ["tollywood", "arjun-reddy", "arjun"],
+  ["kollywood", "koorman", "dhana"],
   ["hollywood", "the-dark-knight", "joker"],
   ["bollywood", "sholay", "gabbar"],
   ["tollywood", "pushpa", "pushpa-raj"],
   ["hollywood", "iron-man", "tony-stark"],
   ["bollywood", "3-idiots", "rancho"],
+  ["kollywood", "moodar-koodam", "white"],
   ["tollywood", "baahubali", "kattappa"],
   ["hollywood", "the-godfather", "vito"],
   ["bollywood", "gully-boy", "murad"],
   ["tollywood", "rrr", "bheem"],
+  ["kollywood", "sathuran", "dheena"],
 ]
   .map(([i, m, c]) => {
     const industry = industries.find((x) => x.id === i);
@@ -31,7 +34,7 @@ const featured = [
   })
   .filter(Boolean);
 
-const heroPosters = ["rrr", "the-dark-knight", "sholay", "arjun-reddy", "inception"];
+const heroPosters = ["rrr", "the-dark-knight", "koorman", "arjun-reddy", "sholay"];
 
 export default function Home() {
   return (
@@ -56,8 +59,8 @@ export default function Home() {
               you grew up with.
             </Item>
             <Item as="p" className="hero__lede">
-              Tollywood, Bollywood and Hollywood icons, each backed by a live voice agent. Dial in, ask anything, and
-              hear them answer in character.
+              Tollywood, Kollywood, Bollywood and Hollywood icons, each on a live voice line. Dial in and hear who
+              picks up. Until each film's director and cast approve a voice, the line plays a permission notice.
             </Item>
             <Item className="hero__actions">
               <a href="#cinemas" className="btn btn--primary btn--lg">
@@ -114,7 +117,7 @@ export default function Home() {
               Choose your cinema
             </Item>
             <Item as="h2" className="title">
-              Three industries. One phone line.
+              Four industries. One phone line.
             </Item>
           </Reveal>
           <Reveal className="industry-grid">
@@ -164,7 +167,7 @@ export default function Home() {
             {[
               ["01", "Pick a film", "Browse by industry. Every film has the characters that made it unforgettable."],
               ["02", "Open a character", "Read who they are, how they talk, and the number they pick up on."],
-              ["03", "Connect and talk", "One tap starts a live voice session. Interrupt, argue, ask for advice. They answer in character."],
+              ["03", "Connect and listen", "One tap starts a live voice session. Right now every line plays a permission notice naming the director and actor who still need to approve the character's voice."],
             ].map(([n, h, p]) => (
               <Item key={n} className="step">
                 <span className="step__num">{n}</span>

@@ -9,7 +9,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "agent:arjun": "node scripts/create-agent.mjs agent/arjun-reddy.json",
-    "agent:arjun:preview": "node scripts/create-agent.mjs agent/arjun-reddy.json --preview"
+    "agent:arjun:preview": "node scripts/create-agent.mjs agent/arjun-reddy.json --preview",
+    "agent:notice": "node scripts/create-agent.mjs agent/permission-notice.json"
   },
   "dependencies": {
     "@elevenlabs/react": "^1.16.0",

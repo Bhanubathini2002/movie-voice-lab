@@ -31,6 +31,7 @@ export default function Industry() {
             <span>{industry.movies.length} films</span>
             <span>{characterCount} characters</span>
           </div>
+          {industry.notice && <p className="banner__notice">{industry.notice}</p>}
         </div>
       </section>
 
@@ -49,7 +50,7 @@ export default function Industry() {
               ))}
             </div>
           </div>
-          <Reveal className="poster-grid" amount={0.05}>
+          <Reveal className={`poster-grid ${industry.movies.length > 4 ? "poster-grid--many" : ""}`} amount={0.05}>
             {industry.movies.map((m) => (
               <Item key={m.id}>
                 <PosterCard industry={industry} movie={m} />

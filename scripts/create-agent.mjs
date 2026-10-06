@@ -128,6 +128,9 @@ async function createAgent(voiceId) {
           llm: cfg.agent.llm || "gpt-4o",
           temperature: cfg.agent.temperature ?? 0.7,
         },
+        ...(cfg.dynamicVariables
+          ? { dynamic_variables: { dynamic_variable_placeholders: cfg.dynamicVariables } }
+          : {}),
       },
       tts: {
         model_id: cfg.agent.ttsModel || "eleven_flash_v2_5",
@@ -151,9 +154,18 @@ async function createAgent(voiceId) {
 function writeAgentId(agentId) {
   const file = path.join(root, "src", "data", "agents.js");
   let src = fs.readFileSync(file, "utf8");
+  if (cfg.exportName) {
+    // Shared agent: update `export const <exportName> = "...";`
+    const re = new RegExp(`^export const ${cfg.exportName} = .*$`, "m");
+    const line = `export const ${cfg.exportName} = "${agentId}";`;
+    src = re.test(src) ? src.replace(re, line) : src + `\n${line}\n`;
+    fs.writeFileSync(file, src);
+    console.log(`  wrote ${cfg.exportName} into src/data/agents.js`);
+    return;
+  }
   const key = cfg.routeKey;
   const line = `  "${key}": "${agentId}",`;
-  const re = new RegExp(`^\\s*"${key.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&")}":.*$`, "m");
+  const re = new RegExp(`^\s*"${key.replace(/[.*+?^${}()|[\]\/]/g, "\$&")}":.*$`, "m");
   if (re.test(src)) {
     src = src.replace(re, line);
   } else {

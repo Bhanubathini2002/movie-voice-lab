@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { findIndustry, findMovie, findCharacter } from "../data/movies";
 import { resolveAgentId } from "../data/agents";
+import { noticeVariables, permissionNotice } from "../data/rights";
 import { art } from "../data/art";
 import Artwork from "../components/Artwork";
 import Monogram from "../components/Monogram";
@@ -19,6 +20,8 @@ export default function Character() {
   if (!industry || !movie || !character) return <NotFound />;
 
   const agentId = resolveAgentId(industryId, movieId, characterId);
+  const dynamicVariables = noticeVariables(movie, character);
+  const disclaimer = character.disclaimer || permissionNotice(movie, character);
   const telHref = `tel:${character.phone.replace(/[^\d+]/g, "")}`;
   const others = movie.characters.filter((c) => c.id !== character.id);
 
@@ -72,14 +75,18 @@ export default function Character() {
             </Item>
 
             <Item>
-              <VoiceCall key={agentId || "none"} character={character} agentId={agentId} accent={industry.accent} />
+              <VoiceCall
+                key={agentId || "none"}
+                character={character}
+                agentId={agentId}
+                accent={industry.accent}
+                dynamicVariables={dynamicVariables}
+              />
             </Item>
 
-            {character.disclaimer && (
-              <Item as="p" className="profile__disclaimer">
-                <strong>Not official.</strong> {character.disclaimer}
-              </Item>
-            )}
+            <Item as="p" className="profile__disclaimer">
+              <strong>Permission pending.</strong> {disclaimer}
+            </Item>
           </motion.div>
         </div>
       </section>

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ConversationProvider, useConversation } from "@elevenlabs/react";
 import { MicIcon, PhoneIcon, CloseIcon } from "./Icons";
 
-export default function VoiceCall({ character, agentId, accent }) {
+export default function VoiceCall({ character, agentId, accent, dynamicVariables }) {
   if (!agentId) {
     return (
       <div className="call call--setup" style={{ "--accent": accent }}>
@@ -23,7 +23,7 @@ export default function VoiceCall({ character, agentId, accent }) {
   }
 
   return (
-    <ConversationProvider agentId={agentId} connectionType="webrtc">
+    <ConversationProvider agentId={agentId} connectionType="webrtc" dynamicVariables={dynamicVariables}>
       <CallPanel character={character} accent={accent} />
     </ConversationProvider>
   );

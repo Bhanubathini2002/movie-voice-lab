@@ -32,7 +32,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="container footer__legal">
-        A fan-made experiment. Character voices are AI agents and are not affiliated with any studio or actor.
+        A fan-made experiment, not affiliated with any studio, director or actor. No character is voiced until the
+        respective rights holders give permission; until then every call plays a notice saying so.
       </div>
     </footer>
   );

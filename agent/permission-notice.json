@@ -1,0 +1,24 @@
+{
+  "slug": "permission-notice",
+  "exportName": "noticeAgentId",
+  "promptFile": "permission-notice.prompt.md",
+  "voiceId": "EMxdghWQV7gqV33j4J3F",
+  "dynamicVariables": {
+    "character_name": "this character",
+    "movie_title": "this film",
+    "rights_holders": "The director, the studio and the actor"
+  },
+  "agent": {
+    "name": "Permission notice (all characters) — Movie Voice Lab",
+    "firstMessage": "Sorry. {{rights_holders}} have not yet given permission to clone the voice or the character of {{character_name}} from {{movie_title}}, so I cannot answer your questions as {{character_name}}. This is only an unofficial prototype. Thank you for understanding.",
+    "language": "en",
+    "llm": "gpt-4o",
+    "temperature": 0.2,
+    "ttsModel": "eleven_flash_v2",
+    "stability": 0.4,
+    "similarity": 0.8,
+    "speed": 0.96,
+    "turnTimeout": 8
+  },
+  "note": "One shared agent for every character that has no agent of its own. The site passes character_name, movie_title and rights_holders as dynamic variables at call start, so the spoken notice names the right people. Arjun Reddy keeps his own agent (agent/arjun-reddy.json)."
+}
